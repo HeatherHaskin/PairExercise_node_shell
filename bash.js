@@ -11,13 +11,18 @@
 
 //process is a global variable that node has
 
+const pwd = require('./pwd');
+const ls = require('./ls');
+
 process.stdout.write( 'prompt > ');
 process.stdin.on('data', (data) => {
   //data isnot a string yet, we neet to turn it into a string;
   const cmd = data.toString().trim();
-  const directory = process.cwd();
+
   if(cmd === 'pwd'){
-    process.stdout.write(directory);
+    pwd();
+  } else if (cmd === 'ls') {
+    ls();
   }
-  process.stdout.write('\nprompt > ');
-})
+
+});
